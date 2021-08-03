@@ -57,6 +57,18 @@ classdef world
         function obj = update_poses(obj,new_poses)
             % return the current poses
             obj.poses = new_poses;
+
+            %have to check if new theta exceeds [-pi, pi]
+            for i = 1:obj.numRobots
+                theta = obj.poses(3,i);
+                if theta > pi
+                    obj.poses(3,i) = mod(theta, pi) - pi;
+                elseif theta < -pi
+                    obj.poses(3,i) = mod(theta, -pi) + pi;
+                end
+            end
+            
+
         end
         
         function poses = get_poses(obj)

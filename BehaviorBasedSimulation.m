@@ -48,9 +48,27 @@ classdef BehaviorBasedSimulation < simulation
             controls = cell(1,obj.numRobots);
             for i = 1:obj.numRobots
                 ctl = obj.controllers{i};
-                pose = poses(:,i);
+%                 pose = poses(:,i);
                 reading = readings{i};
-                controls{i} = ctl.compute_control(pose,reading);
+                controls{i} = ctl.compute_control(poses,reading, i, obj.numRobots);
+                
+%                 total_position = [0; 0; 0];
+%                 for j = obj.numRobots
+%                     if i ==j
+%                         %do nothing
+%                     else
+%                         pose = poses(:,i);
+%                         total_position = total_position + pose;
+%                     end
+%                 end
+%                 centroid = total_position/obj.numRobots;
+%                 centroid_direction = centroid ./ norm(centroid);
+%                 
+%                 w = centroid_direction;
+%                 v = 1.0;
+%                 
+%                 controls{i} = [w v];
+                
             end
          end
     end

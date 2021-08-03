@@ -25,6 +25,8 @@ classdef DiffDriveGoToGoal < control
             obj.controller.MaxAngularVelocity = PursuitInfo.MaxAngularVelocity;
         end
         
+        
+        %input "readings" is not used
         function control = compute_control(obj,pose,readings)
             %Compute control for go to goal behavior
             [vRef,wRef] = obj.controller(pose);

@@ -33,8 +33,13 @@ classdef RangeFinders
                 sensor_sum = sensor_sum + obj.es(i,:).*read;
             end
             direction = sensor_sum ./ (obj.numSensors-1);
-        end
+         end
         
+        
+        %not so sure why we have this
+        %it renders the readings to have only 7~18, twelve readings
+        %probably as the name suggests, to discard readings from the back
+        %sensors, so the robot won't go back to traversed path
         function new_reads = discard_back(obj,reads)
             new_reads = zeros(size(reads));
             s1 = floor(obj.numSensors/4);

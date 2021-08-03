@@ -45,8 +45,10 @@ classdef MapGenerate
                 else
                     type = "circle";
                 end
-                x = obj.space + rand*(obj.x_bnd-2*obj.space);
-                y = obj.space + rand*(obj.y_bnd-2*obj.space);
+%                 x = obj.space + rand*(obj.x_bnd-2*obj.space);
+%                 y = obj.space + rand*(obj.y_bnd-2*obj.space);
+                x = 8.5;
+                y = 6.5;
                 [obj,occupy,success] = obj.addObstacle(type,[x y],size);
                 if (success)
                     break;
